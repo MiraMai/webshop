@@ -77,7 +77,7 @@ console.log(object.itemPrice);
         
             itemList.innerHTML = "";
             
-            firebase.database().ref('/items').orderByChild('itemPrice')
+            firebase.database().ref('/items').orderByValue('itemPrice')
             .once('value', function(snapshot) {
                          
                     snapshot.forEach(child => {
@@ -85,7 +85,7 @@ console.log(object.itemPrice);
                         let object = child.val();
                         
                         let li = document.createElement('li');
-                        li.innerHTML = object.itemName + object.itemPrice;
+                        li.innerHTML = object.itemPrice;
                         itemList.appendChild(li);                      
                     }) // end of for Each loop
                 
