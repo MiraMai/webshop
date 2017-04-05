@@ -58,7 +58,7 @@ console.log(object.itemPrice);
             itemList.innerHTML = "";
             
             firebase.database().ref('/items').orderByChild('itemName')
-            .on('value', function(snapshot) {
+            .once('value', function(snapshot) {
                          
                     snapshot.forEach(child => {
                             
@@ -78,7 +78,7 @@ console.log(object.itemPrice);
             itemList.innerHTML = "";
             
             firebase.database().ref('/items').orderByChild('itemPrice')
-            .on('value', function(snapshot) {
+            .once('value', function(snapshot) {
                          
                     snapshot.forEach(child => {
                             
