@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Webshop</title>
+      
+    <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      
+</head>
+    
+<body>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <input class="form-control" id="item" placeholder="item">
+            <input class="form-control" id="price" placeholder="price">
+            <button class="btn btn-default" id="add">Add</button>            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-default" id="sortByName">Sort by name</button>
+            <button class="btn btn-default" id="sortByPrice">Sort by price</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                <ul id="itemList">
+                </ul>
+            </div>
+        </div>
+    </div>
+<!--************ firebase code**************-->
+    
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAM-5f0x45NMPr2sZgObJF9F4uyQwB4KTw",
+    authDomain: "webshop-c0ce6.firebaseapp.com",
+    databaseURL: "https://webshop-c0ce6.firebaseio.com",
+    projectId: "webshop-c0ce6",
+    storageBucket: "webshop-c0ce6.appspot.com",
+    messagingSenderId: "379308320207"
+  };
+  firebase.initializeApp(config);
+</script>
+<!--********************************************-->
+<script src="webshopFirebase.js"></script>    
+</body>    
+          
