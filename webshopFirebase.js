@@ -5,11 +5,14 @@ window.addEventListener('load', function() {
     // inputs
     let item = document.getElementById('item');
     let price = document.getElementById('price');
+    let showLast = document.getElementById('showLast');
+    let showFirst = document.getElementById('showFirst');
     
     // buttons
     let add = document.getElementById('add');
     let sortByName = document.getElementById('sortByName');
     let sortByPrice = document.getElementById('sortByPrice');
+    let showFirstNumberChosen = document.getElementById('showFirstNumberChosen');
     
     //  lists of items
     let itemList = document.getElementById('itemList');
@@ -20,9 +23,9 @@ window.addEventListener('load', function() {
     .on('value', function(snapshot) {
             snapshot.forEach(child => {
                     let object = child.val();
-console.log(object); 
+/*console.log(object); 
 console.log(object.itemName); 
-console.log(object.itemPrice);            
+console.log(object.itemPrice);    */        
                 
                     
                     let li = document.createElement('li');
@@ -57,7 +60,7 @@ console.log(object.itemPrice);
         
             itemList.innerHTML = "";
             
-            firebase.database().ref('/items').orderByChild('itemName')
+            firebase.database().ref('items/').orderByChild('itemName')
             .once('value', function(snapshot) {
                          
                     snapshot.forEach(child => {
@@ -77,7 +80,7 @@ console.log(object.itemPrice);
         
             itemList.innerHTML = "";
             
-            firebase.database().ref('/items').orderByValue('itemPrice')
+            firebase.database().ref('items').orderByValue()
             .once('value', function(snapshot) {
                          
                     snapshot.forEach(child => {
@@ -85,7 +88,7 @@ console.log(object.itemPrice);
                         let object = child.val();
                         
                         let li = document.createElement('li');
-                        li.innerHTML = object.itemPrice;
+                        li.innerHTML = object.itemName + object.itemPrice;
                         itemList.appendChild(li);                      
                     }) // end of for Each loop
                 
@@ -94,6 +97,28 @@ console.log(object.itemPrice);
     }); // end of sort by price
     
     
-    
+    // show first items
+    showFirstNumberChosen.addEventListener('click', function(){
+                
+                itemList.innerHTML = "";
+                let howManyToShowFirst = showFirst.value;
+                Number(howManyToShowFirst);
+                firebase.database().ref('items/').orderByChild('itemName').limitToFirst(Number(howManyToShowFirst))
+                .on('value', function(snapshot) {
+                        
+                        snapshot.forEach(child => {
+                            
+                            let object = child.val();
+                        
+                            let li = document.createElement('li');
+                            li.innerHTML = object.itemName + object.itemPrice;
+                            itemList.appendChild(li);                            
+                        })  // end of for each loop
+                            showFirst.innerHTML = "";
+                        
+                    });  // end of snapshot 
 
+        
+    });  // end of show first
+    
   }); // end of windows load
