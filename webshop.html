@@ -17,17 +17,17 @@
       
       <style>
       .parallax {
-    /* The image used */
-    background-image: url("pic.jpg");
+            /* The image used */
+            background-image: url("pic.jpg");
 
-    /* Set a specific height */
-    min-height: 500px; 
+            /* Set a specific height */
+            min-height: 500px; 
 
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
           }
         
           h1 {
@@ -43,6 +43,10 @@
               background-color: beige;
               font-size: 14pt;
               font-family: "Lucida Console", Monaco, monospace;
+          }
+          
+          label {
+              color: beige;
           }
                 
       </style>
@@ -70,6 +74,7 @@
         <div class="col-sm-2">
             <input class="form-control" id="item" placeholder="item">
             <input class="form-control" id="price" placeholder="price">
+            <br>
             <button class="btn btn-default" id="add">Add</button>           
         </div>
         <div class="col-sm-5"></div>
@@ -91,6 +96,14 @@
     <br>
     <br>
     <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-7">
+            <h4>Choose amount of items to show in list</h4>
+        </div>
+      
+    </div>
+      
+    <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-1">
             <div class="dropdown">
@@ -104,12 +117,21 @@
             </div>
         </div> 
         <div class="col-sm-1">
-            <input class="form-control" id="showLast" placeholder="Show last">
-            <input class="form-control" id="showFirst" placeholder="Show first">
+             <label for="showLast">Starting from the bottom:</label>
+            <input class="form-control" id="showLast" placeholder="ex. 3">
+            <br>
+            <button class="btn btn-default" id="showLastNumberChosen">Show</button>
+        </div>
+        <div class="col-sm-1">
+             <label for="showFirst">Starting from the top:</label>
+            <input class="form-control" id="showFirst" placeholder="ex. 3">
+            <br>
             <button class="btn btn-default" id="showFirstNumberChosen">Show</button> 
         </div>
-        <div class="col-sm-6"></div>
+        <div class="col-sm-5"></div>
       </div>
+      <br>
+      <br>
             <!--<button class="btn btn-default" id="sortByName">Sort by name</button>
             <button class="btn btn-default" id="sortByPrice">Sort by price</button>-->
       

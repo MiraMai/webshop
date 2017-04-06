@@ -13,9 +13,16 @@ window.addEventListener('load', function() {
     let sortByName = document.getElementById('sortByName');
     let sortByPrice = document.getElementById('sortByPrice');
     let showFirstNumberChosen = document.getElementById('showFirstNumberChosen');
+    let showLastNumberChosen = document.getElementById('showLastNumberChosen');
     
     //  lists of items
     let itemList = document.getElementById('itemList');
+    
+    // skapar globala variabler
+    let textItemDisplay = "item: ";
+    let textPriceDisplay = "   price: ";
+    let dollar = "$";
+    
     
     
     // show list of items in webpage
@@ -29,7 +36,7 @@ console.log(object.itemPrice);    */
                 
                     
                     let li = document.createElement('li');
-                    li.innerHTML = object.itemName + object.itemPrice;
+                    li.innerHTML = textItemDisplay + object.itemName + textPriceDisplay + dollar + object.itemPrice;
                     itemList.appendChild(li);
                     
                 
@@ -66,10 +73,11 @@ console.log(object.itemPrice);    */
                     snapshot.forEach(child => {
                             
                         let object = child.val();
-                        
+                                                
                         let li = document.createElement('li');
-                        li.innerHTML = "Item: " + object.itemName + "   Price: " + object.itemPrice + "$";
-                        itemList.appendChild(li);                      
+                        li.innerHTML = textItemDisplay + object.itemName + textPriceDisplay + dollar + object.itemPrice;
+                        itemList.appendChild(li);
+                                       
                     }) // end of for Each loop
                 
             })  // end of snapshot
@@ -88,8 +96,9 @@ console.log(object.itemPrice);    */
                         let object = child.val();
                         
                         let li = document.createElement('li');
-                        li.innerHTML = object.itemName + object.itemPrice;
-                        itemList.appendChild(li);                      
+                        li.innerHTML = textItemDisplay + object.itemName + textPriceDisplay + dollar + object.itemPrice;
+                        itemList.appendChild(li);
+                                          
                     }) // end of for Each loop
                 
             })  // end of snapshot        
@@ -103,7 +112,7 @@ console.log(object.itemPrice);    */
                 itemList.innerHTML = "";
                 let howManyToShowFirst = showFirst.value;
                 Number(howManyToShowFirst);
-                firebase.database().ref('items/').orderByChild('itemName').limitToFirst(Number(howManyToShowFirst))
+                firebase.database().ref('items/').limitToFirst(Number(howManyToShowFirst))
                 .on('value', function(snapshot) {
                         
                         snapshot.forEach(child => {
@@ -111,10 +120,37 @@ console.log(object.itemPrice);    */
                             let object = child.val();
                         
                             let li = document.createElement('li');
-                            li.innerHTML = object.itemName + object.itemPrice;
-                            itemList.appendChild(li);                            
+                            li.innerHTML = textItemDisplay + object.itemName + textPriceDisplay + dollar + object.itemPrice;
+                            itemList.appendChild(li);
+                    
                         })  // end of for each loop
                             showFirst.innerHTML = "";
+                        
+                    });  // end of snapshot 
+
+        
+    });  // end of show first
+    
+    
+    // show last items
+    showLastNumberChosen.addEventListener('click', function(){
+                
+                itemList.innerHTML = "";
+                let howManyToShowLast = showLast.value;
+                Number(howManyToShowLast);
+                firebase.database().ref('items/').limitToLast(Number(howManyToShowLast))
+                .on('value', function(snapshot) {
+                        
+                        snapshot.forEach(child => {
+                            
+                            let object = child.val();
+                        
+                            let li = document.createElement('li');
+                            li.innerHTML = textItemDisplay + object.itemName + textPriceDisplay + dollar + object.itemPrice;
+                            itemList.appendChild(li);
+                    
+                        })  // end of for each loop
+                            showLast.innerHTML = "";
                         
                     });  // end of snapshot 
 
