@@ -46,7 +46,7 @@ console.log(object.itemPrice);    */
             firebase.database().ref('items/')
             .push({
                 itemName: item.value,
-                itemPrice: price.value                
+                itemPrice: Number(price.value)                
             }) // end of push
             
             item.value = "";
@@ -68,7 +68,7 @@ console.log(object.itemPrice);    */
                         let object = child.val();
                         
                         let li = document.createElement('li');
-                        li.innerHTML = object.itemName + object.itemPrice;
+                        li.innerHTML = "Item: " + object.itemName + "   Price: " + object.itemPrice + "$";
                         itemList.appendChild(li);                      
                     }) // end of for Each loop
                 
@@ -80,7 +80,7 @@ console.log(object.itemPrice);    */
         
             itemList.innerHTML = "";
             
-            firebase.database().ref('items').orderByValue()
+            firebase.database().ref('items/').orderByChild('itemPrice')
             .once('value', function(snapshot) {
                          
                     snapshot.forEach(child => {

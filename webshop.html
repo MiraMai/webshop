@@ -15,37 +15,108 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       
+      <style>
+      .parallax {
+    /* The image used */
+    background-image: url("pic.jpg");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+          }
+        
+          h1 {
+              font-family:Georgia, serif;
+              color: white;
+          }    
+          
+          body {
+              background-color: coral;
+          }
+          
+          .itemBox {
+              background-color: beige;
+              font-size: 14pt;
+              font-family: "Lucida Console", Monaco, monospace;
+          }
+                
+      </style>
+      
 </head>
     
 <body>
-    
+  <div class="container-fluid">
+      <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Sell and buy all kinds of sewing stuff</h1>
+                <p class="text-center">Find everything you need here</p>
+            </div>
+        </div>
+   <div class="parallax"></div>
+      
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 text-center">
+            <h3>Start selling your sewing stuff</h3>
+        </div>
+    </div>
+      
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2">
             <input class="form-control" id="item" placeholder="item">
             <input class="form-control" id="price" placeholder="price">
-            <button class="btn btn-default" id="add">Add</button>            
+            <button class="btn btn-default" id="add">Add</button>           
         </div>
+        <div class="col-sm-5"></div>
     </div>
-    
-    <div class="row">
-        <div class="col-sm-12">
-            <button class="btn btn-default" id="sortByName">Sort by name</button>
-            <button class="btn btn-default" id="sortByPrice">Sort by price</button>
-            <input class="form-control" id="showLast" placeholder="Show last">
-            <input class="form-control" id="showFirst" placeholder="Show first">
-            <button class="btn btn-default" id="showFirstNumberChosen">Show</button> 
-
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-sm-12">
+      
+    <br>
+    <br>  
+    <div class="row itemBox">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2">
             <div>
                 <ul id="itemList">
                 </ul>
             </div>
         </div>
+        <div class="col-sm-5"></div>
     </div>
+      
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-1">
+            <div class="dropdown">
+                <button class="btn btn-normal dropdown-toggle" type="button" data-toggle="dropdown">Sort by
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="sortByName"><a href="#">Name</a></li>
+                    <li id="sortByPrice"><a href="#">Price</a></li>
+                </ul>
+            </div>
+        </div> 
+        <div class="col-sm-1">
+            <input class="form-control" id="showLast" placeholder="Show last">
+            <input class="form-control" id="showFirst" placeholder="Show first">
+            <button class="btn btn-default" id="showFirstNumberChosen">Show</button> 
+        </div>
+        <div class="col-sm-6"></div>
+      </div>
+            <!--<button class="btn btn-default" id="sortByName">Sort by name</button>
+            <button class="btn btn-default" id="sortByPrice">Sort by price</button>-->
+      
+    
+         <div class="parallax"></div>
+
+</div> <!--end of container fluid        -->
 <!--************ firebase code**************-->
     
 <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
